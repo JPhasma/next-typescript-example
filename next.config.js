@@ -4,6 +4,8 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ['rickandmortyapi.com'],
+    loader: 'custom',
+    path: '/',
   },
 };
 
