@@ -20,12 +20,15 @@ function CharacterPage({ character }: { character: Character }) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const res = await fetch(
-    `https://rickandmortyapi.com/api/character/${params.id}`
+    `https://rickandmortyapi.com/api/character/${context.query.id}`
   );
   const character = await res.json();
-
+  console.log(
+    'Only logged on dev terminal, NOT the browser console:',
+    character
+  );
   return {
     props: {
       character,
