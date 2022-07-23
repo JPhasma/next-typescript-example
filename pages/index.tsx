@@ -2,6 +2,7 @@ import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
+import { GetCharacterResults } from '../types';
 
 const Home: NextPage = ({ characters }: any) => {
   return (
@@ -18,7 +19,7 @@ const Home: NextPage = ({ characters }: any) => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const res = await fetch('https://rickandmortyapi.com/api/character');
-  const { results } = await res.json();
+  const { results }: GetCharacterResults = await res.json();
   return {
     props: {
       characters: results,
